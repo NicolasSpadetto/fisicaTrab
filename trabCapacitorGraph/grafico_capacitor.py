@@ -7,7 +7,7 @@ bauds = 9600
 eixo_t = [0.0] 
 eixo_v = [0.0]
 
-T_seg = 3 #em segundos
+T_seg = 6 #em segundos
 
 grafPrint = 0 #vira 1 dps que o gráfico já fora feito
 
@@ -15,16 +15,8 @@ def addEixo(nv_valor, nv_tempo): #0 para t, 1 para v
     global eixo_t
     global eixo_v
     
-    try:
-        if (eixo_v[len(eixo_v) - 1] != nv_valor):
-            eixo_v.append(nv_valor)
-                
-        
-        if (eixo_t[len(eixo_t) - 1] != nv_tempo):
-            eixo_t.append(nv_tempo) #pra sair em seg
-    except:
-        eixo_v.append(nv_valor)
-        eixo_t.append(nv_tempo)
+    eixo_v.append(nv_valor)
+    eixo_t.append(nv_tempo)
             
 
 
@@ -53,21 +45,20 @@ while (not grafPrint):
         print("informação perdida...\n")
     
     print(len(eixo_t))
-    try:
-        if ((eixo_t[len(eixo_t) - 1] >= T_seg)):
 
-            plt.close('all')
-            plt.axis(eixo_t, eixo_v)
-            plt.xlabel("Tempo em Segundos")
-            plt.ylabel("Tensão em Volts")
-            plt.title("Capacitor: carga e descarga")
-            #plt.savefig('plot.png', dpi=300, bbox_inches='tight')
-            plt.show(block= False)
-            plt.pause(1)
-            grafPrint = 1
-    except:
-        t.sleep(30)
-        break
+    if ((eixo_t[len(eixo_t) - 1] >= T_seg)):
+
+        print(eixo_t)
+        plt.plot(eixo_t, eixo_v)
+        plt.xlabel("Tempo em Segundos")
+        plt.ylabel("Tensão em Volts")
+        plt.title("Capacitor: carga e descarga")
+        #plt.savefig('plot.png', dpi=300, bbox_inches='tight')
+        plt.show(block= False)
+        plt.pause(130)
+        
+        grafPrint = 1
+
 
 t.sleep(30)
         

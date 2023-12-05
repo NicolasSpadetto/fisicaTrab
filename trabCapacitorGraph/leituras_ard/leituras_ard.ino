@@ -5,8 +5,8 @@
 #define Vcc 2        //pino digital que alimenta com 5v
 #define Cap 0.0001F  //100uF, o F é para float
 #define Resistor 4700
-#define pwmPeriodo 6.0F
-#define pwmDC 50.0F
+#define pwmPeriodo 10.0F
+#define pwmDC 30.0F
 
 unsigned long start;
 bool reset = 1;
